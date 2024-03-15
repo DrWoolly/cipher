@@ -8,22 +8,6 @@ symbol = [x for x in string.punctuation]
 numbers = [x for x in string.digits]
 
 
-def generate_seed() -> str:
-    seed = ""
-    for i in range(25):
-        seed += choice(numbers)
-    return seed
-
-
-def gen_seed_list() -> list[int]:
-    seed = input("What is your code?: ")
-    output_list = []
-    for i in seed:
-        output_list.append(int(i))
-
-    return output_list
-
-
 def encode(text: str, code: list[int], repeat: int = 1) -> None:
     for i in range(repeat):
         encoded_message = ""
@@ -66,21 +50,6 @@ def decode(text: str, code: list[int], repeat: int = 1) -> None:
         file.write(decoded_message)
 
 
-#
-# with open("message.txt") as file:
-#     message = file.read()
-#
-# encoded_text = encode(text=message, code=gen_seed_list())
-# print(encoded_text)
-# print("")
-# print(decode(encoded_text, code=gen_seed_list()))
-
-
-window = ctk.CTk()
-window.title("Cipher")
-window.geometry("500x600")
-
-
 def get_message():
     return message_display.get("1.0", "end-1c")
 
@@ -105,6 +74,10 @@ def get_repeat():
         else:
             return repeat
 
+
+window = ctk.CTk()
+window.title("Cipher")
+window.geometry("500x600")
 
 message_display = ctk.CTkTextbox(window, width=500, height=500)
 message_display.grid(column=1, row=0, columnspan=2)
