@@ -1,6 +1,5 @@
 import string
 import customtkinter as ctk
-from random import choice
 
 upper = [x for x in string.ascii_uppercase]
 lower = [x for x in string.ascii_lowercase]
